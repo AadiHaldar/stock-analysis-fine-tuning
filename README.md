@@ -1,4 +1,4 @@
-﻿# Stock Analysis Fine-Tuning
+# Stock Analysis Fine-Tuning
 
 A local, end-to-end financial analysis system that combines three components on a single consumer GPU:
 
@@ -99,35 +99,35 @@ sequenceDiagram
 
 ```
 .
-â”œâ”€â”€ config/
-â”‚   â”œâ”€â”€ settings.py            Paths, tickers, date range, VRAM budget
-â”‚   â””â”€â”€ model_config.py        Model IDs and training hyperparameters
-â”œâ”€â”€ data/
-â”‚   â”œâ”€â”€ raw/                   Raw OHLCV CSVs, news CSV, filing text
-â”‚   â”‚   â””â”€â”€ documents/         Earnings calls and SEC summaries for RAG
-â”‚   â”œâ”€â”€ processed/             Indicator CSVs and Llama JSONL splits
-â”‚   â”œâ”€â”€ cache/                 Downloaded SEC EDGAR filings
-â”‚   â””â”€â”€ vectors/               Serialised FAISS payload
-â”œâ”€â”€ scripts/
-â”‚   â”œâ”€â”€ download_data.py       Prices, news and PhraseBank, then dataset build
-â”‚   â”œâ”€â”€ train_finbert.py       FinBERT fine-tuning entry point
-â”‚   â”œâ”€â”€ train_llm.py           Llama 3.2 3B QLoRA entry point
-â”‚   â”œâ”€â”€ download_sec.py        SEC EDGAR filing downloader and cleaner
-â”‚   â”œâ”€â”€ build_rag.py           Builds the FAISS index from data/raw/documents
-â”‚   â”œâ”€â”€ run_inference.py       Interactive analyst CLI
-â”‚   â”œâ”€â”€ evaluate.py            Evaluation suite and plots
-â”‚   â””â”€â”€ install.ps1            Windows environment bootstrap
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ data_pipeline/         stock_data, technical_indicators, label_generator,
-â”‚   â”‚                          news_data, sentiment_data, preprocessor
-â”‚   â”œâ”€â”€ models/                finbert_trainer, llm_trainer, memory_utils,
-â”‚   â”‚                          model_selector
-â”‚   â”œâ”€â”€ inference/             sentiment_engine, analyst_engine, unified_api
-â”‚   â””â”€â”€ rag/                   document_loader, embeddings, vector_store, copilot
-â”œâ”€â”€ requirements.txt
-â”œâ”€â”€ setup.py
-â”œâ”€â”€ .env.example
-â””â”€â”€ TECHNICAL_DOCUMENTATION.md
+|-- config/
+|   |-- settings.py            Paths, tickers, date range, VRAM budget
+|   `-- model_config.py        Model IDs and training hyperparameters
+|-- data/
+|   |-- raw/                   Raw OHLCV CSVs, news CSV, filing text
+|   |   `-- documents/         Earnings calls and SEC summaries for RAG
+|   |-- processed/             Indicator CSVs and Llama JSONL splits
+|   |-- cache/                 Downloaded SEC EDGAR filings
+|   `-- vectors/               Serialised FAISS payload
+|-- scripts/
+|   |-- download_data.py       Prices, news and PhraseBank, then dataset build
+|   |-- train_finbert.py       FinBERT fine-tuning entry point
+|   |-- train_llm.py           Llama 3.2 3B QLoRA entry point
+|   |-- download_sec.py        SEC EDGAR filing downloader and cleaner
+|   |-- build_rag.py           Builds the FAISS index from data/raw/documents
+|   |-- run_inference.py       Interactive analyst CLI
+|   |-- evaluate.py            Evaluation suite and plots
+|   `-- install.ps1            Windows environment bootstrap
+|-- src/
+|   |-- data_pipeline/         stock_data, technical_indicators, label_generator,
+|   |                          news_data, sentiment_data, preprocessor
+|   |-- models/                finbert_trainer, llm_trainer, memory_utils,
+|   |                          model_selector
+|   |-- inference/             sentiment_engine, analyst_engine, unified_api
+|   `-- rag/                   document_loader, embeddings, vector_store, copilot
+|-- requirements.txt
+|-- setup.py
+|-- .env.example
+`-- TECHNICAL_DOCUMENTATION.md
 ```
 
 Trained checkpoints are written to `outputs/models/` and are intentionally not committed (see [Limitations](#limitations-and-caveats)).
